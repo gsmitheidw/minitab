@@ -1,10 +1,14 @@
-﻿$chocoshare = '\\comphome.computing.stu.it-tallaght.ie\msi\choco'
+﻿$chocoshare = 'UNC_PATH_OR_HTTP_PATH'
 $name = 'Minitab'
 $installerType = 'exe'
-$url = "$chocoshare\Minitab\minitab18.1.0.0setup.exe"
-$silentArgs = ' /exenoui /exelang 1033 /qn ACCEPT_EULA=1 DISABLE_UPDATES=1 LICENSE_SERVER=stu-lic.stu.it-tallaght.ie'
+$url = "$chocoshare\minitab18.1.0.0setup.exe"
+$silentArgs = '/exenoui /exelang 1033 /qn ACCEPT_EULA=1 DISABLE_UPDATES=1 LICENSE_SERVER=YOUR_LICENCEMANAGER'
 
 Install-ChocolateyInstallPackage $name $installerType $silentArgs $url
 
+# Registration
+$regEmail = 'YOUR@EMAILADDRESS'
+$regFirstname = 'YOURFIRSTNAME'
+$regLastname = 'YOURLASTNAME'
 
-@("[Minitab 18]","EMail=dept.computing.support@it-tallaght.ie","firstName=Computing","lastName=Labs") | out-file -filepath C:\ProgramData\Minitab\License.ini
+@("[Minitab 18]","EMail=$regEmail","firstName=$regFirstname","lastName=$regLastname")  | Out-File -Filepath $env:ProgramData\Minitab\License.ini

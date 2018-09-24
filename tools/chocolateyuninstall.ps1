@@ -1,1 +1,1 @@
-﻿Uninstall-Package -Name "Minitab18"
+﻿Uninstall-Package -Name "Minitab"
